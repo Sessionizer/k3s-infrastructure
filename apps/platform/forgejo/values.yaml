@@ -11,6 +11,8 @@ gitea:
 
     admin:
         existingSecret: gitea-admin-secret
+        email: nichlashoberg@gmail.com
+        
     persistence:
         enabled: true
         size: 10Gi
