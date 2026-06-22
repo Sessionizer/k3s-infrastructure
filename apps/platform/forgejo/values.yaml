@@ -15,6 +15,7 @@ gitea:
 
   admin:
     existingSecret: gitea-admin-secret
+    username: Greboh
     email: nichlashoberg@gmail.com
 
   persistence:
