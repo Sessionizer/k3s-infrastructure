@@ -1,4 +1,4 @@
-forgejo:
+gitea:
     config:
         server:
             DOMAIN: git.greboh.dev
@@ -11,7 +11,7 @@ forgejo:
 
     admin:
         existingSecret: forgejo-admin
-
+        passwordMode: keepUpdated
     persistence:
         enabled: true
         size: 10Gi
