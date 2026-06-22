@@ -1,42 +1,46 @@
+# https://forgejo.org/docs/latest/admin/config-cheat-sheet/
 gitea:
-    config:
-        server:
-            DOMAIN: git.greboh.dev
-            ROOT_URL: https://git.greboh.dev/
-            SSH_DOMAIN: git.greboh.dev
-        service:
-            DISABLE_REGISTRATION: false
-        database:
-            DB_TYPE: sqlite3
+  config:
+    server:
+      DOMAIN: git.greboh.dev
+      ROOT_URL: https://git.greboh.dev/
+      SSH_DOMAIN: git.greboh.dev
+    service:
+      DISABLE_REGISTRATION: true
+      REQUIRE_SIGNIN_VIEW: false
+    service.explore:
+      REQUIRE_SIGNIN_VIEW: false
+    database:
+      DB_TYPE: sqlite3
 
-    admin:
-        existingSecret: gitea-admin-secret
-        email: nichlashoberg@gmail.com
-        
-    persistence:
-        enabled: true
-        size: 10Gi
-        storageClass: local-path
+  admin:
+    existingSecret: gitea-admin-secret
+    email: nichlashoberg@gmail.com
 
-    resources:
-        requests:
-            cpu: 100m
-            memory: 256Mi
-        limits:
-            memory: 512Mi
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: local-path
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
 
 ingress:
-    enabled: true
-    className: traefik
-    annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-        - host: git.greboh.dev
-          paths:
-           - path: /
-             pathType: Prefix
+  enabled: true
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: git.greboh.dev
+      paths:
+        - path: /
+          pathType: Prefix
 
-    tls:
-     - secretName: forgejo-tls
-       hosts:
+  tls:
+    - secretName: forgejo-tls
+      hosts:
         - git.greboh.dev
