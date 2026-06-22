@@ -10,8 +10,7 @@ gitea:
             DB_TYPE: sqlite3
 
     admin:
-        existingSecret: forgejo-admin
-        passwordMode: keepUpdated
+        existingSecret: gitea-admin-secret
     persistence:
         enabled: true
         size: 10Gi
