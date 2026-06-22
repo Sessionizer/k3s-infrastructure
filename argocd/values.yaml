@@ -1,0 +1,42 @@
+global:
+    domain: argo.greboh.dev
+
+configs:
+    params:
+        server.insecure: true
+
+server:
+    ingress:
+        enabled: true
+        ingressClassName: traefik
+        hostname: argo.greboh.dev
+        annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+        tls: true
+
+redis:
+    resources:
+        requests:
+            cpu: 50m
+            memory: 64Mi
+        limits:
+            memory: 128Mi
+
+controller:
+    resources:
+        requests:
+            cpu: 100m
+            memory: 128Mi
+        limits:
+            memory: 256Mi
+
+repoServer:
+    resources:
+        requests:
+            cpu: 50m
+            memory: 128Mi
+        limits:
+            memory: 256Mi
+            
+applicationSet:
+    enabled: false
